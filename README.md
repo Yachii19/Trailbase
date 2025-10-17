@@ -1,231 +1,86 @@
-# 🎉 TrailBase MVP - Setup Complete!
+# TrailBase
 
-## ✅ Successfully Fixed & Created
+TrailBase is a demo platform for issuing verifiable digital certificates and managing freelance gigs that use on-chain escrow. The frontend demonstrates wallet-integrated UX (OnchainKit + Wagmi), smart contract interactions, and a verification workflow for institutions and freelancers.
 
-Your TrailBase project is now **fully configured** and **running successfully**!
+This README is a concise guide for using, developing, and deploying the frontend application.
 
-### 🔧 What Was Fixed
+## What this app does
+- Issue and view certificates (VeriScribe module)
+- Post and accept gigs with USDC escrow and proof-of-work tokens (SkillSync module)
+- Simple admin workflow for approving institution verification requests
+- Integrates wallet connection and on-chain transactions via OnchainKit and Wagmi
 
-1. **Package Dependencies**
-   - ✅ Updated `react-day-picker` to v9.4.4 (React 19 compatible)
-   - ✅ Removed deprecated packages
-   - ✅ Installed with `--legacy-peer-deps` to resolve conflicts
+## Quick start (local development)
+Prerequisites:
+- Node.js >= 18
+- npm
 
-2. **Configuration Files**
-   - ✅ Fixed `postcss.config.js` to export `plugins` object
-   - ✅ Updated `tailwind.config.js` with proper content paths
-   - ✅ Configured `tsconfig.json` with `@/*` path aliases
+1. Clone the repo and install dependencies:
 
-3. **File Structure**
-   - ✅ Created `src/app/globals.css` with Tailwind directives
-   - ✅ Renamed `ForecasterWrapper.tsx` → `FarcasterWrapper.tsx`
-   - ✅ Moved `providers.tsx` to correct location
-
-4. **Missing UI Components Created**
-   - ✅ `src/components/ui/alert.tsx`
-   - ✅ `src/components/ui/badge.tsx`
-   - ✅ `src/components/ui/button.tsx`
-   - ✅ `src/components/ui/card.tsx`
-   - ✅ `src/components/ui/dialog.tsx`
-   - ✅ `src/components/ui/input.tsx`
-   - ✅ `src/components/ui/label.tsx`
-   - ✅ `src/components/ui/select.tsx`
-   - ✅ `src/components/ui/tabs.tsx`
-   - ✅ `src/components/ui/textarea.tsx`
-
-5. **Utility Library**
-   - ✅ Created `src/lib/utils.ts` with `cn()` helper
-
-## 🚀 Server Status
-
-```
-✓ Server Running Successfully!
-- Local:   http://localhost:3001
-- Network: http://192.168.56.1:3001
+```powershell
+cd "d:\Desktop\Programming Projects\Hackaton\TrailBase"
+npm install --legacy-peer-deps
 ```
 
-## 📁 Final Project Structure
+2. Create a local environment file (copy and edit `backend/.env` safely):
 
-```
-TrailBase/
-├── src/
-│   ├── app/
-│   │   ├── layout.tsx              ✅ Root layout
-│   │   ├── page.tsx                ✅ Home page
-│   │   ├── providers.tsx           ✅ OnchainKit provider
-│   │   └── globals.css             ✅ Global styles
-│   │
-│   ├── components/
-│   │   ├── FarcasterWrapper.tsx    ✅ Farcaster wrapper
-│   │   │
-│   │   ├── modules/
-│   │   │   ├── VeriScribeModule.tsx        ✅ Academic verification
-│   │   │   ├── SkillSyncModule.tsx         ✅ Gig verification
-│   │   │   └── CertificateViewer.tsx       ✅ Certificate viewer
-│   │   │
-│   │   ├── ui/                     ✅ All 10 UI components
-│   │   │
-│   │   └── verification/
-│   │       ├── AdminPanel.tsx              ✅ Admin panel
-│   │       └── VerificationRequestForm.tsx ✅ Request form
-│   │
-│   └── lib/
-│       ├── contracts.ts            ✅ Smart contracts
-│       ├── verification.ts         ✅ Verification logic
-│       ├── utils.ts                ✅ Utilities
-│       └── logger.ts               ✅ Logging
-│
-├── package.json                    ✅ Dependencies fixed
-├── tsconfig.json                   ✅ Path aliases configured
-├── tailwind.config.js              ✅ Content paths added
-├── postcss.config.js               ✅ Plugins exported
-├── next.config.js                  ✅ Next.js config
-│
-├── PROJECT_STRUCTURE.md            📚 Full documentation
-└── SETUP_COMPLETE.md               ✅ This file
+```powershell
+copy backend\.env backend\.env.local
+# Edit backend\.env.local and add your MONGODB_URI and any needed keys
 ```
 
-## 🎯 All Components Working
+3. Run the dev server:
 
-### Feature Modules (3/3)
-- ✅ **VeriScribe**: Academic & skills verification
-- ✅ **SkillSync**: Freelance gig verification
-- ✅ **CertificateViewer**: View all certificates
-
-### UI Components (10/10)
-- ✅ Alert, Badge, Button, Card, Dialog
-- ✅ Input, Label, Select, Tabs, Textarea
-
-### Verification System (2/2)
-- ✅ Admin Panel
-- ✅ Verification Request Form
-
-### Core Systems (4/4)
-- ✅ Smart contract integration
-- ✅ Wallet connection (OnchainKit)
-- ✅ Farcaster SDK integration
-- ✅ Verification logic & storage
-
-## 🌐 Access Your App
-
-Open your browser and navigate to:
-- **Local**: http://localhost:3001
-- **Network**: http://192.168.56.1:3001
-
-## 🔑 Key Features
-
-1. **Connect Wallet** - Base network support via OnchainKit
-2. **VeriScribe Module** - Issue academic certificates as NFTs
-3. **SkillSync Module** - Verify freelance gigs with USDC escrow
-4. **Certificate Viewer** - View and verify all certificates
-5. **Admin Panel** - Approve institution verification requests
-6. **Institution Requests** - Request to become verified institution
-
-## 📝 TypeScript Notes
-
-You may see some TypeScript warnings in the editor:
-- ✅ **CSS @tailwind warnings**: These are normal (PostCSS directives)
-- ✅ **Contract address type assertions**: Non-blocking
-- ⚠️ **If you see import errors**: Restart TypeScript server
-
-### Restart TypeScript Server
-Press `Ctrl+Shift+P` → Type "TypeScript: Restart TS Server" → Enter
-
-## 🐛 Troubleshooting
-
-### If Module Not Found Errors Appear
-```bash
-# 1. Delete build cache
-Remove-Item -Recurse -Force .next
-
-# 2. Restart dev server
+```powershell
 npm run dev
 ```
 
-### If Styling Doesn't Appear
-1. Check `globals.css` is imported in `layout.tsx` ✅
-2. Verify Tailwind config has content paths ✅
-3. Hard refresh browser (Ctrl+Shift+R)
+Open http://localhost:3000 (or the printed port) to view the app.
 
-### If Wallet Won't Connect
-1. Ensure you're on Base network
-2. Check wallet is unlocked
-3. Verify API keys in `providers.tsx`
+## Build for production (local test)
 
-## 📚 Next Steps
-
-### 1. Test the Application
-- Connect wallet
-- Try VeriScribe module
-- Try SkillSync module
-- View certificates
-- Test admin functions (if admin address)
-
-### 2. Deploy Smart Contracts
-Update contract addresses in `src/lib/contracts.ts`:
-```typescript
-export const CERTIFICATE_CONTRACT_ADDRESS = 'YOUR_DEPLOYED_ADDRESS'
-export const GIG_ESCROW_CONTRACT_ADDRESS = 'YOUR_DEPLOYED_ADDRESS'
+```powershell
+npm run build
+npm start
 ```
 
-### 3. Configure Environment
-Create `.env.local`:
-```env
-NEXT_PUBLIC_CERTIFICATE_CONTRACT_ADDRESS=0x...
-NEXT_PUBLIC_GIG_ESCROW_CONTRACT_ADDRESS=0x...
-NEXT_PUBLIC_PROOF_OF_WORK_CONTRACT_ADDRESS=0x...
+## Deploying to Vercel
+1. Push your repository to GitHub.
+2. Go to https://vercel.com and import the repository.
+3. When configuring the project, set:
+   - Framework: Next.js (auto-detected)
+   - Install Command: `npm install --legacy-peer-deps` (only if you need legacy peer deps)
+   - Build Command: `npm run build`
+4. Add environment variables in Vercel (Project → Settings → Environment Variables):
+   - `NEXT_PUBLIC_API_URL` — URL of your backend API (if used)
+   - `NEXT_PUBLIC_CERTIFICATE_CONTRACT_ADDRESS` — contract address (optional)
+   - `NEXT_PUBLIC_GIG_ESCROW_CONTRACT_ADDRESS` — contract address (optional)
+
+Do NOT add private backend keys (like `DEPLOYER_PRIVATE_KEY` or `ADMIN_PRIVATE_KEY`) as public frontend environment variables.
+
+## Important files and where to look
+- `src/app/providers.tsx` — OnchainKit provider & global wrappers
+- `src/lib/contracts.ts` — Contract ABIs, addresses, and helper types
+- `src/components/modules/VeriScribeModule.tsx` — Certificate issuance UI
+- `src/components/modules/SkillSyncModule.tsx` — Gig posting/accepting UI
+- `backend/` — Express API and contract scripts (server-side)
+
+## Notes & troubleshooting
+- If a build fails due to a missing module, try cleaning and reinstalling:
+
+```powershell
+Remove-Item -Recurse -Force node_modules .next
+npm install --legacy-peer-deps
+npm run build
 ```
 
-### 4. Customize Branding
-- Update metadata in `layout.tsx`
-- Modify color scheme in `globals.css`
-- Add your logo/images to `public/`
+- If secrets were accidentally committed, remove them from git and rotate keys.
 
-## 🎨 Styling System
+## Contributing and development
+- Follow the repo's code conventions and TypeScript types in `src/lib`.
+- For frontend-only changes, focus under `src/`.
+- For backend or contract deployment, check the `backend/` and `contracts/` folders and associated README files.
 
-Built with **shadcn/ui** design system:
-- Consistent, accessible components
-- Light/dark mode support
-- Customizable via CSS variables in `globals.css`
-- Responsive by default
+## License
+This project is provided as-is for demo and educational purposes.
 
-## 🔗 Tech Stack
-
-- **Framework**: Next.js 15.3.4 (App Router)
-- **React**: 19.1.0
-- **Blockchain**: Base (OnchainKit 0.38.17)
-- **Wallet**: Wagmi 2.18.1 + Viem 2.38.2
-- **Styling**: Tailwind CSS + shadcn/ui
-- **Mini App**: Farcaster SDK 0.2.0
-- **Forms**: React Hook Form + Zod
-
-## 📖 Documentation
-
-- **Full Structure**: See `PROJECT_STRUCTURE.md`
-- **Smart Contracts**: See `src/lib/contracts.ts`
-- **Verification**: See `src/lib/verification.ts`
-
-## ✨ Summary
-
-**Everything is working!** 🎉
-
-- ✅ All components created
-- ✅ Dependencies installed
-- ✅ Configuration fixed
-- ✅ Server running on port 3001
-- ✅ No blocking errors
-
-You can now:
-1. Open http://localhost:3001 in your browser
-2. Connect your wallet (Base network)
-3. Test all features
-4. Deploy to production when ready
-
----
-
-**Need Help?**
-- Check `PROJECT_STRUCTURE.md` for detailed architecture
-- Review component files for implementation details
-- Restart TypeScript server if you see import errors
-
-**Happy Building!** 🚀
