@@ -66,7 +66,7 @@ export default function VeriScribeModule() {
   const calls = formData.studentAddress
     ? [
         {
-          address: CERTIFICATE_CONTRACT_ADDRESS,
+          to: CERTIFICATE_CONTRACT_ADDRESS as `0x${string}`,
           abi: CERTIFICATE_ABI,
           functionName: 'mintCertificate',
           args: [formData.studentAddress as `0x${string}`, createMetadataURI()],

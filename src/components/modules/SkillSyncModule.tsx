@@ -91,16 +91,16 @@ export default function SkillSyncModule() {
     ? [
         // First approve USDC spending
         {
-          address: USDC_CONTRACT_ADDRESS,
+          to: USDC_CONTRACT_ADDRESS,
           abi: ERC20_ABI,
           functionName: 'approve',
           args: [GIG_ESCROW_CONTRACT_ADDRESS, getUSDCAmount()],
         },
-        // Then create the gig
+        // Then post the gig
         {
-          address: GIG_ESCROW_CONTRACT_ADDRESS,
+          to: GIG_ESCROW_CONTRACT_ADDRESS,
           abi: GIG_ESCROW_ABI,
-          functionName: 'createGig',
+          functionName: 'postGig',
           args: [
             gigFormData.title,
             gigFormData.description,
