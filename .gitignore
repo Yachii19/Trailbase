@@ -1,0 +1,60 @@
+### Node / Next.js
+node_modules/
+/.next/
+out/
+dist/
+build/
+
+# Local env files
+.env
+.env.local
+.env.*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor/OS files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.log
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# TypeScript
+*.tsbuildinfo
+
+# macOS
+.DS_Store
+
+# Optional npm cache
+.npm
+.eslintcache
+
+# Coverage
+coverage/
+
+# Next.js build and cache
+.next/
+.vercel/
+
+# Hardhat / Solidity artifacts (if you want to ignore compiled artifacts)
+contracts/artifacts/
+contracts/cache/
+backend/artifacts/
+backend/cache/
+
+# Prisma
+prisma/migrations/
+
+# Keys and secrets
+*.pem
+*.key
+*.p12

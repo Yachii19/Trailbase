@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSync Pro - Admin Helper</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #764ba2;
+            margin-top: 30px;
+        }
+        .step {
+            background: #f7f7f7;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+        }
+        .button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+            transition: background 0.3s;
+        }
+        .button:hover {
+            background: #764ba2;
+        }
+        .button.secondary {
+            background: #48bb78;
+        }
+        .button.secondary:hover {
+            background: #38a169;
+        }
+        .alert {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .success {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        #output {
+            background: #f7f7f7;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+            min-height: 100px;
+            margin: 10px 0;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .card {
+            background: #f7f7f7;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+        }
+        .card h3 {
+            margin-top: 0;
+            color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 SkillSync Pro - Admin Setup Helper</h1>
+        
+        <div class="alert">
+            <strong>⚠️ Important:</strong> This helper page requires your wallet to be connected via browser extension (MetaMask, Coinbase Wallet, etc.)
+        </div>
+
+        <h2>Step 1: Check Your Wallet Connection</h2>
+        <div class="step">
+            <button class="button" onclick="checkWallet()">🔍 Check Wallet Connection</button>
+            <button class="button secondary" onclick="connectWallet()">🔗 Connect Wallet</button>
+            <div id="output"></div>
+        </div>
+
+        <h2>Step 2: Get Your Admin Instructions</h2>
+        <div class="step">
+            <p>Once connected, we'll show you exactly what to add to the code:</p>
+            <button class="button" onclick="generateInstructions()">📋 Generate Setup Instructions</button>
+            <div id="instructions"></div>
+        </div>
+
+        <h2>Step 3: Quick Testing Commands</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Backend Health Check</h3>
+                <button class="button" onclick="checkBackend()">Test Backend</button>
+                <div id="backend-output"></div>
+            </div>
+            <div class="card">
+                <h3>Frontend Server</h3>
+                <button class="button" onclick="checkFrontend()">Test Frontend</button>
+                <div id="frontend-output"></div>
+            </div>
+        </div>
+
+        <h2>📚 Quick Reference</h2>
+        <div class="card">
+            <h3>PowerShell Commands</h3>
+            <div class="code-block">
+# Start Backend Server
+cd backend
+npm run dev
+
+# Start Frontend Server (new terminal)
+npm run dev
+
+# Check if servers are running
+curl http://localhost:5000/health
+curl http://localhost:3002
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>File Locations</h3>
+            <ul>
+                <li><strong>Admin Config:</strong> <code>src/lib/verification.ts</code> (line 28)</li>
+                <li><strong>Testing Guide:</strong> <code>TESTING_GUIDE.md</code></li>
+                <li><strong>Admin Setup:</strong> <code>ADMIN_SETUP.md</code></li>
+                <li><strong>Backend Config:</strong> <code>backend/.env</code></li>
+            </ul>
+        </div>
+
+        <h2>🎯 Common Test Scenarios</h2>
+        <div class="card">
+            <h3>VeriScribe Flow</h3>
+            <ol>
+                <li>Submit institution verification request</li>
+                <li>Admin approves request</li>
+                <li>Institution issues certificate NFT</li>
+                <li>Student receives soulbound certificate</li>
+            </ol>
+            <button class="button" onclick="openTestingGuide()">📖 Open Full Testing Guide</button>
+        </div>
+
+        <div class="card">
+            <h3>SkillSync Flow</h3>
+            <ol>
+                <li>Client posts gig with USDC</li>
+                <li>Freelancer accepts gig</li>
+                <li>Client releases payment</li>
+                <li>Freelancer receives USDC + POW NFT</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        let walletAddress = null;
+
+        async function checkWallet() {
+            const output = document.getElementById('output');
+            
+            if (typeof window.ethereum === 'undefined') {
+                output.innerHTML = `
+                    <div style="color: red; margin-top: 10px;">
+                        ❌ No wallet detected!<br><br>
+                        Please install:<br>
+                        • <a href="https://www.coinbase.com/wallet" target="_blank">Coinbase Wallet</a><br>
+                        • <a href="https://metamask.io" target="_blank">MetaMask</a>
+                    </div>
+                `;
+                return;
+            }
+
+            try {
+                const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+                
+                if (accounts.length === 0) {
+                    output.innerHTML = `
+                        <div style="color: orange; margin-top: 10px;">
+                            ⚠️ Wallet detected but not connected.<br>
+                            Click "Connect Wallet" button above.
+                        </div>
+                    `;
+                } else {
+                    walletAddress = accounts[0];
+                    output.innerHTML = `
+                        <div style="color: green; margin-top: 10px;">
+                            ✅ <strong>Connected!</strong><br><br>
+                            <strong>Your Wallet Address:</strong><br>
+                            <code style="background: #f0f0f0; padding: 5px; border-radius: 3px; display: block; margin: 5px 0;">
+                                ${walletAddress}
+                            </code>
+                            <button class="button secondary" onclick="copyAddress()">📋 Copy Address</button>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                output.innerHTML = `<div style="color: red; margin-top: 10px;">❌ Error: ${error.message}</div>`;
+            }
+        }
+
+        async function connectWallet() {
+            const output = document.getElementById('output');
+            
+            if (typeof window.ethereum === 'undefined') {
+                output.innerHTML = '<div style="color: red; margin-top: 10px;">❌ No wallet extension found!</div>';
+                return;
+            }
+
+            try {
+                const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                walletAddress = accounts[0];
+                
+                output.innerHTML = `
+                    <div style="color: green; margin-top: 10px;">
+                        ✅ <strong>Wallet Connected!</strong><br><br>
+                        <strong>Your Address:</strong><br>
+                        <code style="background: #f0f0f0; padding: 5px; border-radius: 3px; display: block; margin: 5px 0;">
+                            ${walletAddress}
+                        </code>
+                        <button class="button secondary" onclick="copyAddress()">📋 Copy Address</button>
+                    </div>
+                `;
+            } catch (error) {
+                output.innerHTML = `<div style="color: red; margin-top: 10px;">❌ Connection failed: ${error.message}</div>`;
+            }
+        }
+
+        function copyAddress() {
+            if (walletAddress) {
+                navigator.clipboard.writeText(walletAddress);
+                alert('✅ Address copied to clipboard!');
+            }
+        }
+
+        function generateInstructions() {
+            const instructionsDiv = document.getElementById('instructions');
+            
+            if (!walletAddress) {
+                instructionsDiv.innerHTML = '<div style="color: red; margin-top: 10px;">❌ Please connect your wallet first!</div>';
+                return;
+            }
+
+            instructionsDiv.innerHTML = `
+                <div class="success" style="margin-top: 15px;">
+                    <h3>✅ Your Admin Setup Instructions</h3>
+                    
+                    <h4>1. Open this file in VS Code:</h4>
+                    <code style="background: #2d2d2d; color: #f8f8f2; padding: 10px; display: block; border-radius: 5px;">
+                        src/lib/verification.ts
+                    </code>
+
+                    <h4>2. Find the ADMIN_ADDRESSES array (around line 28)</h4>
+                    
+                    <h4>3. Add this line:</h4>
+                    <div style="background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 5px; margin: 10px 0; overflow-x: auto;">
+                        <pre style="margin: 0;">const ADMIN_ADDRESSES = [
+  '0xAdminWallet1234567890123456789012345678901',
+  '0xAdminWallet0987654321098765432109876543210',
+  '<span style="color: #50fa7b;">${walletAddress}</span>', // <-- Add this line
+];</pre>
+                    </div>
+
+                    <h4>4. Save the file and reload your browser</h4>
+                    
+                    <button class="button" onclick="copyCode()">📋 Copy Code Snippet</button>
+                    
+                    <h4 style="margin-top: 20px;">5. Verify Admin Access:</h4>
+                    <p>After reloading, you should see:</p>
+                    <ul>
+                        <li>✅ "Admin Access" badge in VeriScribe header</li>
+                        <li>✅ "Admin Panel" tab in VeriScribe module</li>
+                    </ul>
+                </div>
+            `;
+        }
+
+        function copyCode() {
+            if (!walletAddress) return;
+            
+            const code = `  '${walletAddress}', // Your admin wallet`;
+            navigator.clipboard.writeText(code);
+            alert('✅ Code snippet copied! Paste it into ADMIN_ADDRESSES array.');
+        }
+
+        async function checkBackend() {
+            const output = document.getElementById('backend-output');
+            output.innerHTML = '<div style="color: blue;">⏳ Checking backend...</div>';
+            
+            try {
+                const response = await fetch('http://localhost:5000/health');
+                const data = await response.json();
+                
+                output.innerHTML = `
+                    <div style="color: green; margin-top: 10px;">
+                        ✅ Backend is running!<br>
+                        Status: ${data.status}<br>
+                        Time: ${new Date(data.timestamp).toLocaleString()}
+                    </div>
+                `;
+            } catch (error) {
+                output.innerHTML = `
+                    <div style="color: red; margin-top: 10px;">
+                        ❌ Backend not responding<br><br>
+                        Start it with:<br>
+                        <code style="background: #2d2d2d; color: #f8f8f2; padding: 5px; display: block; margin: 5px 0;">
+                            cd backend<br>
+                            npm run dev
+                        </code>
+                    </div>
+                `;
+            }
+        }
+
+        async function checkFrontend() {
+            const output = document.getElementById('frontend-output');
+            output.innerHTML = '<div style="color: blue;">⏳ Checking frontend...</div>';
+            
+            try {
+                const response = await fetch('http://localhost:3002');
+                
+                if (response.ok) {
+                    output.innerHTML = `
+                        <div style="color: green; margin-top: 10px;">
+                            ✅ Frontend is running!<br>
+                            <a href="http://localhost:3002" target="_blank" class="button" style="display: inline-block; margin-top: 10px;">
+                                🚀 Open App
+                            </a>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                output.innerHTML = `
+                    <div style="color: red; margin-top: 10px;">
+                        ❌ Frontend not responding<br><br>
+                        Start it with:<br>
+                        <code style="background: #2d2d2d; color: #f8f8f2; padding: 5px; display: block; margin: 5px 0;">
+                            npm run dev
+                        </code>
+                    </div>
+                `;
+            }
+        }
+
+        function openTestingGuide() {
+            window.open('TESTING_GUIDE.md', '_blank');
+        }
+
+        // Auto-check wallet on load
+        window.addEventListener('load', () => {
+            setTimeout(checkWallet, 500);
+        });
+    </script>
+</body>
+</html>
